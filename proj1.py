@@ -44,7 +44,7 @@ def draw(img, points):
         cv2.circle(img, point, 15, (0, 255, 255), cv2.FILLED)
 
 def main():
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(1)
     cap.set(3, 640)
     cap.set(4, 480)
     cap.set(10, 150)

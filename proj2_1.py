@@ -96,7 +96,7 @@ def main():
         img_output = cv2.resize(img_output, (int(img_output.shape[1]*0.3), int(img_output.shape[0]*0.3)))
 
 
-    stack = stackImages(0.2, [img, img_threshold])
+    stack = stackImages(0.2, [img, img_output])
     cv2.imshow("Result", img_output)
     cv2.imshow("Image", stack)
     cv2.waitKey(0)

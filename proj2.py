@@ -83,11 +83,11 @@ def warp(img, points):
     pts2 = np.float32([[0, 0], [width, 0], [0, height], [width, height]])
     matrix = cv2.getPerspectiveTransform(pts1, pts2)
     img_wrap = cv2.warpPerspective(img, matrix, (width, height))
-    img_wrap = cv2.rotate(img_wrap, cv2.ROTATE_90_CLOCKWISE)
+    # img_wrap = cv2.rotate(img_wrap, cv2.ROTATE_90_CLOCKWISE)
     return img_wrap
 
 def main():
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(1)
     cap.set(3, 640)
     cap.set(4, 480)
     cap.set(10, 150)
@@ -102,8 +102,8 @@ def main():
         if len(points) > 0:
             img_output = warp(img, points)
 
-        img = cv2.rotate(img, cv2.ROTATE_90_CLOCKWISE)
-        img_threshold = cv2.rotate(img_threshold, cv2.ROTATE_90_CLOCKWISE)
+        # img = cv2.rotate(img, cv2.ROTATE_90_CLOCKWISE)
+        # img_threshold = cv2.rotate(img_threshold, cv2.ROTATE_90_CLOCKWISE)
         stack = stackImages(0.8, [img, img_threshold])
         cv2.imshow("Result", img_output)
         cv2.imshow("Image", stack)

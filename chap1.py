@@ -194,10 +194,10 @@ def stackImages(scale,imgArray):
 
 
 """Face detection"""
-# faceCascade = cv2.CascadeClassifier("haarcascades/haarcascade_frontalface_default.xml")
-# img = cv2.imread("lena.jpg")
-# imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-# webcam = cv2.VideoCapture(0)
+faceCascade = cv2.CascadeClassifier("haarcascades/haarcascade_frontalface_default.xml")
+img = cv2.imread("image/lena.jpg")
+imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+# webcam = cv2.VideoCapture(1)
 #
 # while True:
 #     success, frame = webcam.read()
@@ -209,14 +209,16 @@ def stackImages(scale,imgArray):
 #     cv2.imshow("Webcam", frame)
 #     if cv2.waitKey(1) & 0xFF == ord('q'):
 #         break
-
+#
 # faces = faceCascade.detectMultiScale(imgGray, 1.1, 4)
 # for (x, y, w, h) in faces:
 #     cv2.rectangle(img, (x, y), (x+w, y+h), (0, 255, 0), 2)
 
-# stack = stackImages(1, ([img,]))
-# cv2.imshow("Faces", img)
-# cv2.waitKey(0)
+faces = faceCascade.detectMultiScale(imgGray, 1.1, 4)
+for (x, y, w, h) in faces:
+    cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
+cv2.imshow("Faces", img)
+cv2.waitKey(0)
 
 
 
